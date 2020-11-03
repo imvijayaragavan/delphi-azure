@@ -12,7 +12,7 @@ module "aks-node-pool-snet" {
   subnet_name          = var.subnet_name
   resource_group_name  = var.resource_group_name
   subnet_prefix        = [var.subnet_prefix]
-  virtual_network_name = var.vnet_name
+  vnet_name            = var.vnet_name
 }
 
 resource "azurerm_public_ip_prefix" "kubernetes_dev" {

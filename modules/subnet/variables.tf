@@ -9,11 +9,4 @@ variable "location" {
 variable "subnet_name" {}
 variable "subnet_prefix" {}
 variable "vnet_name" {}
-variable "nsg_id" {
-  description = "Default NSG ID"
-}
-
-variable "route_table_id" {
-  description = "default route table id"
-}
 
