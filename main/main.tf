@@ -33,7 +33,7 @@ module "aks" {
   service_principal_client_secret = var.azuread_service_principal_password
   kubernetes_version              = var.kubernetes_version
   ip_prefix_id                    = [azurerm_public_ip_prefix.kubernetes_dev.id]
-  aks_node_pool_snet_id           = module.aks-node-pool-snet.id
+  aks_node_pool_snet_id           = module.aks-node-pool-snet.subnet_id
   service_cidr                    = var.service_cidr
   pod_cidr                        = var.pod_cidr
   dns_service_ip                  = var.dns_service_ip
