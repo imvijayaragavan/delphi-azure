@@ -16,11 +16,11 @@ variable "vnet_cidr" {
 }
 
 variable "subnet_name" {
-  type = map(string)
+  type = string
 }
 
 variable "subnet_prefix" {
-  type = map(string)
+  type = string
 }
 
 variable "tags" {
@@ -33,10 +33,6 @@ variable "aks_name" {
 
 variable "kubernetes_version" {
   description = "Version of Kubernetes"
-}
-
-variable "aks_address_space" {
-  description = "A address space for aks-vnet"
 }
 
 variable "service_cidr" {
@@ -84,5 +80,5 @@ variable "key_vault_sku_name" {
 }
 
 variable "key_vault_key_name" {
-    description = "Provide the key vault key name
+    description = "Provide the key vault key name"
 }
