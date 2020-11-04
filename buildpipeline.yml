@@ -1,0 +1,17 @@
+trigger:
+- master
+
+pool:
+  name: Azure Pipelines
+
+steps:
+- task: CopyFilesOverSSH@0
+  displayName: 'copy_terraform_scripts'
+  inputs:
+    sshEndpoint: 'Azure-test-agent'
+    sourceFolder: main
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: main
