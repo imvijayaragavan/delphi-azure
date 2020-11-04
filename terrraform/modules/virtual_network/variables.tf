@@ -8,7 +8,7 @@ variable "location" {
 }
 
 variable "vnet_name" {
-  description = "Provide Vnet Name "
+  description = "Provide Vnet Name"
 }
 
 variable "vnet_cidr" {

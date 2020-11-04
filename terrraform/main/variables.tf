@@ -13,6 +13,7 @@ variable "vnet_name" {
 
 variable "vnet_cidr" {
     description = "Provide vnet cidr address space"
+    type        = string
 }
 
 variable "subnet_name" {

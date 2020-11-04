@@ -11,7 +11,7 @@ module "vnet_aks" {
   resource_group_name = var.resource_group_name
   location            = var.location
   vnet_name           = var.vnet_name
-  vnet_cidr           = [var.vnet_cidr]
+  vnet_cidr           = var.vnet_cidr
   tags                = var.tags["generic"]
 }
 
