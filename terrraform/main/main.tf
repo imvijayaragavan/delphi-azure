@@ -11,7 +11,7 @@ module "vnet_aks" {
   resource_group_name = var.resource_group_name
   location            = var.location
   vnet_name           = var.vnet_name
-  vnet_cidr           = var.vnet_cidr
+  vnet_cidr           = [var.vnet_cidr]
   tags                = var.tags["generic"]
 }
 
@@ -27,7 +27,7 @@ resource "azurerm_public_ip_prefix" "kubernetes_dev" {
   name                = var.public_ip_prefix_name
   location            = var.location
   resource_group_name = var.resource_group_name
-  prefix_length       = 28
+  prefix_length       = 30
   tags                = var.tags["generic"]
 }
 
