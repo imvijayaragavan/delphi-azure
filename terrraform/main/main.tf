@@ -13,6 +13,7 @@ module "vnet_aks" {
   vnet_name           = var.vnet_name
   vnet_cidr           = var.vnet_cidr
   tags                = var.tags["generic"]
+  depends_on          = [module.resource_group_delphi]
 }
 
 module "aks-node-pool-snet" {
@@ -21,6 +22,7 @@ module "aks-node-pool-snet" {
   resource_group_name  = var.resource_group_name
   subnet_prefix        = [var.subnet_prefix]
   vnet_name            = var.vnet_name
+  depends_on           = [module.vnet_aks]
 }
 
 resource "azurerm_public_ip_prefix" "kubernetes_dev" {
@@ -29,6 +31,7 @@ resource "azurerm_public_ip_prefix" "kubernetes_dev" {
   resource_group_name = var.resource_group_name
   prefix_length       = 30
   tags                = var.tags["generic"]
+  depends_on          = [module.resource_group_delphi]
 }
 
 module "aks" {
@@ -47,6 +50,7 @@ module "aks" {
   dns_service_ip                  = var.dns_service_ip
   np_orchestrator_version         = var.np_orchestrator_version
   tags                            = var.tags["generic"]
+  depends_on                      = [module.vnet_aks]
 }
 
 module "acr" {
@@ -58,6 +62,7 @@ module "acr" {
   service_principal_client_id     = var.azuread_service_principal_id
   role_type                       = var.role_type
   tags                            = var.tags["generic"]
+  depends_on                      = [module.resource_group_delphi]
 }
 
 module "kv" {
@@ -68,12 +73,13 @@ module "kv" {
   key_vault_sku_name    = var.key_vault_sku_name
   key_vault_key_name    = var.key_vault_key_name
   tags                  = var.tags["generic"]
+  depends_on            = [module.resource_group_delphi]
 }
 
 resource "azurerm_key_vault_access_policy" "kv-sp" {
   key_vault_id = module.kv.key_vault_id
-  tenant_id    = "89b0ba56-c903-46da-b1d8-2ee4728bafae"
-  object_id    = "aedc8655-57f5-466d-8996-887d368f27cd"
+  tenant_id    = "b4f4cfb9-6268-48f6-8f8a-2e8891d5add1"
+  object_id    = "5e1ae97d-f022-4fa6-8ffb-0eb7edd3335c"
   key_permissions = [
     "Get",
     "List",
