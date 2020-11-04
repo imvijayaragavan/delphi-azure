@@ -2,7 +2,7 @@ resource "azurerm_key_vault" "current" {
   name                = var.key_vault_name
   location            = var.location
   resource_group_name = var.resource_group_name
-  tenant_id           = "89b0ba56-c903-46da-b1d8-2ee4728bafae"
+  tenant_id           = "b4f4cfb9-6268-48f6-8f8a-2e8891d5add1"
   tags                = var.tags
 
   sku_name                    = var.key_vault_sku_name
