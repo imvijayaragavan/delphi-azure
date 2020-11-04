@@ -1,3 +1,11 @@
+
+module "resource_group_delphi" {
+  source              = "../modules/resource_group"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  tags                = var.tags["generic"]
+}
+
 module "vnet_aks" {
   source              = "../modules/virtual_network"
   resource_group_name = var.resource_group_name

@@ -9,9 +9,9 @@ steps:
   displayName: 'copy_terraform_scripts'
   inputs:
     sshEndpoint: 'Azure-test-agent'
-    sourceFolder: main
+    sourceFolder: terrraform/main
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   inputs:
-    PathtoPublish: main
+    PathtoPublish: terrraform
