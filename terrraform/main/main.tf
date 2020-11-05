@@ -62,7 +62,7 @@ module "acr" {
   service_principal_client_id     = var.azuread_service_principal_id
   role_type                       = var.role_type
   tags                            = var.tags["generic"]
-  depends_on                      = [module.resource_group_delphi]
+  depends_on                      = [module.kv]
 }
 
 module "kv" {
@@ -76,10 +76,10 @@ module "kv" {
   depends_on            = [module.resource_group_delphi]
 }
 
-resource "azurerm_key_vault_access_policy" "kv-sp" {
+resource "azurerm_key_vault_access_policy" "kv-sp-access" {
   key_vault_id = module.kv.key_vault_id
   tenant_id    = "b4f4cfb9-6268-48f6-8f8a-2e8891d5add1"
-  object_id    = "5e1ae97d-f022-4fa6-8ffb-0eb7edd3335c"
+  object_id    = "790c2247-edef-4ddd-92cc-f0274b1104df"
   key_permissions = [
     "Get",
     "List",
@@ -100,4 +100,5 @@ resource "azurerm_key_vault_access_policy" "kv-sp" {
     "Backup",
     "Restore",
   ]
+  depends_on            = [module.kv]
 }
